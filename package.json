@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.ts",
-    "build": "tsc -p ./"
+    "build": "tsc -p ./",
+    "temp:clear": "ts-node ./temp/clear.ts",
+    "temp:seed": "ts-node ./temp/seed.ts"
   },
   "keywords": [],
   "author": "",

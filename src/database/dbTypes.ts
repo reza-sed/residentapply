@@ -1,6 +1,6 @@
 import { Collection, ObjectId } from "mongodb";
 
-export enum ListingTypes {
+export enum ListingType {
   Apartment = "apartment",
   House = "house",
   Villa = "villa",

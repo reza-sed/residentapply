@@ -241,12 +241,13 @@ export const userResolvers: IResolvers = {
       try {
         const data: UserListingData = { result: [], total: 0 };
 
-        let cursor = await db.listings.find({ _id: { $in: user.bookings } });
+        let cursor = await db.listings.find({ _id: { $in: user.listings } });
+        data.total = await cursor.count();
+
         // pagination
         cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
         cursor = cursor.limit(limit);
 
-        data.total = await cursor.count();
         data.result = await cursor.toArray();
 
         return data;
