@@ -1,0 +1,69 @@
+@import "~antd/dist/antd.css";
+#app {
+  height: 100vh;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  min-width: 23rem;
+}
+
+.login-card__intro {
+  text-align: center;
+  margin: 1rem;
+}
+
+.login-card__intro-icon {
+  height: 10rem;
+}
+
+.login-card__form .login-card__form-forgot {
+  float: right;
+}
+
+.login-card__form .login-card__form-button {
+  width: 100%;
+}
+
+.login-card__form .login-card__form-register {
+  margin-top: 0.5rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.app-header {
+  background-color: white;
+  box-shadow: 0px 0px 10px #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-header__title .app-header__logo {
+  width: 60px;
+}
+
+.user {
+  margin: 1rem;
+}
+
+.user-profile {
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+.user-profile__card {
+  text-align: center;
+}
