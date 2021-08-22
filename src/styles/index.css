@@ -1,6 +1,6 @@
 @import "~antd/dist/antd.css";
 #app {
-  height: 100vh;
+  background-color: white;
 }
 
 .login {
@@ -66,4 +66,28 @@
 
 .user-profile__card {
   text-align: center;
+}
+
+.user-listings {
+  margin: 0 3rem;
+}
+
+.user-bookings {
+  margin: 0 3rem;
+}
+
+.listing-card {
+  width: 350px;
+}
+
+.listing-card__image {
+  max-height: 200px;
+}
+
+.listing-card__price {
+  color: dodgerblue;
+}
+
+.listing-card__price > span {
+  color: gray;
 }

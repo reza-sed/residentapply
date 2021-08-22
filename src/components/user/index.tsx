@@ -6,7 +6,7 @@ import {
   User as UserData,
   UserVariables,
 } from "../../graphql/queries/user/__generated__/User";
-import { Row, Col, Layout, Skeleton } from "antd";
+import { Row, Col, Layout } from "antd";
 import UserProfile from "./components/user-profile";
 import { Viewer } from "../../utils/lib/types";
 import { PageSkeleton } from "../../utils/components";
@@ -24,7 +24,7 @@ interface Props {
 }
 
 const { Content } = Layout;
-const PAGE_LIMIT = 2;
+const PAGE_LIMIT = 4;
 export const User = ({
   match,
   viewer,

@@ -1,7 +1,8 @@
 import React from "react";
-import { List, Typography } from "antd";
+import { List, Typography, Pagination } from "antd";
 import { User } from "../../../graphql/queries/user/__generated__/User";
 import { ListingCard } from "../../../utils/components";
+import { Link } from "react-router-dom";
 
 interface Props {
   userListings: User["user"]["listings"];
@@ -18,8 +19,10 @@ export default function UserListings({
   setListingsPage,
   limit,
 }: Props) {
+  console.log("total", userListings.total);
+  console.log("limit", limit);
   return (
-    <div>
+    <div className="user-listings">
       <Title level={4}>Listings</Title>
       <Paragraph>
         user's available listings which could be applied for accomodation
@@ -38,9 +41,11 @@ export default function UserListings({
           onChange: (page: number) => setListingsPage(page),
         }}
         renderItem={(userlisting) => (
-          <List.Item>
-            <ListingCard listing={userlisting} />
-          </List.Item>
+          <Link to={`/listing/${userlisting.id}`}>
+            <List.Item>
+              <ListingCard listing={userlisting} />
+            </List.Item>
+          </Link>
         )}
       ></List>
     </div>

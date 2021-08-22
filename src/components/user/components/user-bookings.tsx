@@ -21,7 +21,7 @@ export default function UserBookings({
   const result = userBookings ? userBookings.result : null;
   const total = userBookings ? userBookings.total : null;
   return (
-    <div>
+    <div className="user-bookings">
       <Title level={4}>Bookings</Title>
       <Paragraph>user's booked accomodation</Paragraph>
       <List

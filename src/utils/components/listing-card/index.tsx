@@ -18,12 +18,19 @@ const { Text, Title } = Typography;
 export const ListingCard = ({ listing }: Props) => {
   return (
     <Card
+      className="listing-card"
       hoverable
-      cover={<div style={{ backgroundImage: `url(${listing.image})` }} />}
+      cover={
+        <img
+          className="listing-card__image"
+          alt="example"
+          src={`${listing.image}`}
+        />
+      }
     >
       <div>
-        <Title level={4}>
-          {listing.price}
+        <Title className="listing-card__price" level={4}>
+          ${Math.round(listing.price / 100)}
           <span>/day</span>
         </Title>
         <Text strong ellipsis>

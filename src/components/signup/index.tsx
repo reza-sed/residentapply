@@ -16,9 +16,8 @@ export const Signup = ({ history }: RouteComponentProps) => {
   const onFinish = async (signupInput: registerUserVariables) => {
     try {
       if (signupInput) {
-        const response = await registerUserFn({ variables: signupInput });
-        console.log(response);
-        // history.push("/login");
+        await registerUserFn({ variables: signupInput });
+        history.push("/login");
       }
     } catch (error) {}
   };

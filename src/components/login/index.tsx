@@ -8,7 +8,7 @@ import {
   Checkbox,
   Spin,
 } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { UserOutlined, LockOutlined, DatabaseFilled } from "@ant-design/icons";
 import logo from "../../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
@@ -35,10 +35,11 @@ export const Login = ({ setViewer }: Props) => {
     loginVariables
   >(LOGIN, {
     onCompleted: (data) => {
-      if (data && data.login) {
+      if (data && data.login && data.login.username) {
         setViewer(data.login);
-      }
-      displaySuccess("Successful Login!");
+        history.push("/");
+        displaySuccess("Successful Login!");
+      } else displayError("Invalid username or password!");
     },
   });
 
@@ -46,7 +47,6 @@ export const Login = ({ setViewer }: Props) => {
     try {
       if (loginInput && loginInput.username) {
         await loginFn({ variables: loginInput });
-        history.replace("/");
       }
     } catch (error) {
       console.log("error !!!", error);
