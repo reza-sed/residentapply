@@ -23,7 +23,7 @@ export default function UserProfile({ user, viewerIsUser }: Props) {
     <div className="user-profile">
       <Card className="user-profile__card">
         <div className="user-profile__avatar">
-          <Avatar size={100} src={""} />
+          <Avatar size={100} src={user.avatar} />
         </div>
         <Divider />
         <div className="user-profile__detail">

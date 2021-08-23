@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #050a30;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt|Shadows+Into+Light|Cedarville+Cursive");
 @import "~antd/dist/antd.css";
 #app {
   background-color: white;
@@ -90,4 +95,32 @@
 
 .listing-card__price > span {
   color: gray;
+}
+
+.listing {
+  margin: 5rem 10rem 10rem;
+}
+
+.listing-detail {
+  width: 100%;
+}
+
+.listing-detail__image {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 0.5rem;
+}
+
+.listing-detail__host a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.listing-detail__host-image {
+  margin-right: 1rem;
+}
+
+.listing-detail__host-title {
+  font-family: "Rock Salt", cursive;
 }

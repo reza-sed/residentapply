@@ -19,8 +19,6 @@ export default function UserListings({
   setListingsPage,
   limit,
 }: Props) {
-  console.log("total", userListings.total);
-  console.log("limit", limit);
   return (
     <div className="user-listings">
       <Title level={4}>Listings</Title>

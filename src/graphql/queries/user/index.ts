@@ -8,6 +8,7 @@ export const USER = gql`
       hasWallet
       income
       email
+      avatar
       bookings(limit: $limit, page: $bookingsPage) {
         total
         result {

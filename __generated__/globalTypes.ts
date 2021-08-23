@@ -7,6 +7,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum ListingType {
+  APARTMENT = "APARTMENT",
+  HOUSE = "HOUSE",
+  VILLA = "VILLA",
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

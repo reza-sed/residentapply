@@ -39,6 +39,7 @@ export const User = ({
       listingsPage,
       limit: PAGE_LIMIT,
     },
+    errorPolicy: "all",
   });
 
   const user = data ? data.user : null;
@@ -73,7 +74,7 @@ export const User = ({
     );
   }
 
-  if (error) {
+  if (!data?.user && error) {
     console.log(error);
     return (
       <Content className="user">
