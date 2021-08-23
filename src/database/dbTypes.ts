@@ -1,9 +1,9 @@
 import { Collection, ObjectId } from "mongodb";
 
 export enum ListingType {
-  Apartment = "apartment",
-  House = "house",
-  Villa = "villa",
+  Apartment = "APARTMENT",
+  House = "HOUSE",
+  Villa = "VILLA",
 }
 
 export interface BookingsIndexMonth {
@@ -45,6 +45,7 @@ export interface User {
   lastName?: string;
   username: string;
   email: string;
+  avatar?: string;
   password: string;
   walletId: string;
   token?: string;

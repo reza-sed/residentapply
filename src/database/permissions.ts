@@ -12,8 +12,12 @@ const isAuthenticated = rule()((parent, args, { user }) => {
   return user !== null;
 });
 
-const isAuthorized = rule()((parent, { id }, { user }) => {
-  return user._id === parent.id;
+const isUserAuthorized = rule()((parent, { id }, { user }) => {
+  return user.id == parent._id.toHexString();
+});
+
+const isListingAuthorized = rule()((parent, { id }, { user }) => {
+  return user.id == parent.host;
 });
 
 export default shield(
@@ -21,14 +25,18 @@ export default shield(
     Mutation: {
       registerUser: allow,
       login: allow,
+      logout: isAuthenticated,
     },
     Query: {
       user: isAuthenticated,
     },
     User: {
-      income: isAuthorized,
-      bookings: isAuthorized,
+      income: isUserAuthorized,
+      bookings: isUserAuthorized,
+    },
+    Listing: {
+      bookings: isListingAuthorized,
     },
   },
-  { debug: true }
+  { debug: false }
 );
