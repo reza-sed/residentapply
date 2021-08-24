@@ -12,6 +12,8 @@ import { Col, Layout, Row } from "antd";
 import ErrorElement from "../../utils/components/error";
 import ListingDetail from "./components/listing-detail";
 import ListingBookings from "./components/listing-booking";
+import CreateBooking from "./components/create-booking";
+import { Moment } from "moment";
 
 interface MatchParam {
   id: string;
@@ -22,6 +24,10 @@ const { Content } = Layout;
 
 export const Listing = ({ match }: RouteComponentProps<MatchParam>) => {
   const [bookingPage, setBookingPage] = useState<number>(1);
+
+  const [checkInDate, setCheckInDate] = useState<Moment | null>(null);
+  const [checkOutDate, setCheckOutDate] = useState<Moment | null>(null);
+
   const { data, loading, error } = useQuery<ListingData, ListingVariables>(
     LISTING,
     {
@@ -63,12 +69,25 @@ export const Listing = ({ match }: RouteComponentProps<MatchParam>) => {
     />
   ) : null;
 
+  const CreateBookingElement = listing ? (
+    <CreateBooking
+      price={listing.price}
+      checkInDate={checkInDate}
+      checkOutDate={checkOutDate}
+      setCheckInDate={setCheckInDate}
+      setCheckOutDate={setCheckOutDate}
+    />
+  ) : null;
+
   return (
     <Content className="listing">
       <Row gutter={24} justify="space-between">
         <Col xs={24} lg={14}>
           {ListingDetailElement}
           {ListingBookingElement}
+        </Col>
+        <Col xs={24} lg={10}>
+          {CreateBookingElement}
         </Col>
       </Row>
     </Content>

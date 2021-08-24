@@ -124,3 +124,7 @@
 .listing-detail__host-title {
   font-family: "Rock Salt", cursive;
 }
+
+.listing-booking {
+  text-align: center;
+}
