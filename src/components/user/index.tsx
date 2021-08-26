@@ -75,7 +75,6 @@ export const User = ({
   }
 
   if (!data?.user && error) {
-    console.log(error);
     return (
       <Content className="user">
         <ErrorElement description="this user may not exist!" />

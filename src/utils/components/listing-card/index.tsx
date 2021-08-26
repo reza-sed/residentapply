@@ -23,7 +23,7 @@ export const ListingCard = ({ listing }: Props) => {
       cover={
         <img
           className="listing-card__image"
-          alt="example"
+          alt={listing.title}
           src={`${listing.image}`}
         />
       }

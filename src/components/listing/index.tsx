@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/react-hooks";
 import React from "react";
-import { LISTING } from "../../graphql/queries/listing";
 import { RouteComponentProps } from "react-router-dom";
 import {
   Listing as ListingData,
@@ -14,6 +13,7 @@ import ListingDetail from "./components/listing-detail";
 import ListingBookings from "./components/listing-booking";
 import CreateBooking from "./components/create-booking";
 import { Moment } from "moment";
+import { LISTING } from "../../graphql/queries";
 
 interface MatchParam {
   id: string;

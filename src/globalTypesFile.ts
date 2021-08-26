@@ -13,6 +13,11 @@ export enum ListingType {
   VILLA = "VILLA",
 }
 
+export enum ListingsFilter {
+  PRICE_HIGH_TO_LOW = "PRICE_HIGH_TO_LOW",
+  PRICE_LOW_TO_HIGH = "PRICE_LOW_TO_HIGH",
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
