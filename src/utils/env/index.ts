@@ -6,4 +6,5 @@ export const ENV_VARIABLES = {
   MONGO_PASSWORD: process.env.MONGO_PASSWORD,
   MONGO_DB: process.env.MONGO_DB,
   COOKIE_SECRET: process.env.COOKIE_SECRET,
+  IP_STACK_SECRET: process.env.IP_STACK_SECRET,
 };

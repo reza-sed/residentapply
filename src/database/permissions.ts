@@ -38,5 +38,5 @@ export default shield(
       bookings: isListingAuthorized,
     },
   },
-  { debug: false }
+  { debug: true }
 );

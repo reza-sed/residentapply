@@ -7,6 +7,11 @@ export const listing = gql`
     VILLA
   }
 
+  enum ListingsFilter {
+    PRICE_LOW_TO_HIGH
+    PRICE_HIGH_TO_LOW
+  }
+
   type Listings {
     total: Int
     result: [Listing!]!

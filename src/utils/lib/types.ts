@@ -13,3 +13,8 @@ export interface RequestUser {
   lastName?: string;
   permissions?: string[];
 }
+
+export interface Location {
+  city: string;
+  country_name: string;
+}

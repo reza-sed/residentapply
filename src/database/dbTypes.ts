@@ -6,6 +6,11 @@ export enum ListingType {
   Villa = "VILLA",
 }
 
+export enum ListingsFilter {
+  PriceLowToHigh = "PRICE_LOW_TO_HIGH",
+  PriceHighToLow = "PRICE_HIGH_TO_LOW",
+}
+
 export interface BookingsIndexMonth {
   [key: string]: boolean;
 }
