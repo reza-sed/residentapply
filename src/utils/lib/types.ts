@@ -18,3 +18,9 @@ export interface Location {
   city: string;
   country_name: string;
 }
+
+export interface GeocodeLocation {
+  city: string;
+  admin: string;
+  country: string;
+}

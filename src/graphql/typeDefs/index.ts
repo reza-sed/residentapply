@@ -8,7 +8,12 @@ const Query = gql`
   type Query {
     listing(id: ID!): Listing!
     user(id: ID): User!
-    listings(filter: ListingsFilter!, page: Int!, limit: Int!): Listings!
+    listings(
+      location: String
+      filter: ListingsFilter!
+      page: Int!
+      limit: Int!
+    ): Listings!
     locate: Location
   }
 `;

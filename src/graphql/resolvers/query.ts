@@ -8,9 +8,11 @@ import {
 } from "../../database/dbTypes";
 import { ENV_VARIABLES } from "../../utils/env";
 import fetch from "node-fetch";
-import { Location } from "../../utils/lib/types";
+import { GeocodeLocation, Location } from "../../utils/lib/types";
+import { geocode } from "../../utils/services/location-geocode";
 
 interface ListingsInput {
+  location?: string;
   limit: number;
   page: number;
   filter: ListingsFilter;
@@ -72,13 +74,23 @@ export const queryResolvers: IResolvers = {
     },
     listings: async (
       _parent: undefined,
-      { page, limit, filter }: ListingsInput,
+      { location, page, limit, filter }: ListingsInput,
       { db }: { db: Database }
     ): Promise<ListingsData> => {
       try {
         const data: ListingsData = { result: [], total: 0 };
+        let query = {} as GeocodeLocation;
 
-        let cursor = await db.listings.find();
+        if (location) {
+          const { admin, city, country } = await geocode(location);
+
+          if (admin) query.admin = admin;
+          if (city) query.city = city;
+          if (country) query.country = country;
+          else throw new Error("could not find the requested location");
+        }
+
+        let cursor = await db.listings.find(query);
 
         if (filter && filter === ListingsFilter.PriceLowToHigh) {
           cursor = cursor.sort({ price: 1 });
