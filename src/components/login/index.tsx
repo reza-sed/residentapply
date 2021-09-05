@@ -8,7 +8,7 @@ import {
   Checkbox,
   Spin,
 } from "antd";
-import { UserOutlined, LockOutlined, DatabaseFilled } from "@ant-design/icons";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import logo from "../../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";

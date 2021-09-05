@@ -5,7 +5,7 @@ import {
   ProfileOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Viewer } from "../../../utils/lib/types";
 import { useMutation } from "@apollo/react-hooks";
 import { logout as LogOutData } from "../../../graphql/mutations/user/__generated__/logout";
@@ -19,12 +19,15 @@ interface Props {
 }
 
 export const MenuItem = ({ viewer, setViewer }: Props) => {
+  const history = useHistory();
+
   const [logoutFn] = useMutation<LogOutData>(LOGOUT, {
     onCompleted: (data) => {
       if (data && data.logout) {
         setViewer(data.logout);
+        displaySuccess("Successfully signed out !");
+        history.replace("/login");
       }
-      displaySuccess("Successfully signed out !");
     },
 
     onError: (data) => {

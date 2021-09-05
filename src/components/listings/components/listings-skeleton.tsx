@@ -1,13 +1,13 @@
 import { Card, List, Skeleton } from "antd";
-import listingLoading from "../assets/listing-loading-card-cover.jpg";
+import listingLoading from "../../home/assets/listing-loading-card-cover.jpg";
 
 export default function ListingsSkeleton() {
-  const dataPlaceholders = [{}, {}, {}, {}];
+  const dataPlaceholders = [{}, {}, {}, {}, {}, {}, {}, {}];
   return (
     <div className="home-listings">
-      <Skeleton paragraph={{ rows: 0 }} />
+      <Skeleton paragraph={{ rows: 1 }} />
       <List
-        grid={{ gutter: 18, xs: 1, lg: 4, sm: 2 }}
+        grid={{ gutter: 8, xs: 1, lg: 4, sm: 2 }}
         dataSource={dataPlaceholders}
         renderItem={(listing) => (
           <List.Item>

@@ -21,6 +21,8 @@ export interface Listings_listings_result {
 
 export interface Listings_listings {
   __typename: "Listings";
+  total: number | null;
+  region: string | null;
   result: Listings_listings_result[];
 }
 
@@ -29,7 +31,8 @@ export interface Listings {
 }
 
 export interface ListingsVariables {
-  filter?: ListingsFilter | null;
+  location?: string | null;
+  filter: ListingsFilter;
   page: number;
   limit: number;
 }

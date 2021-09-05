@@ -14,7 +14,7 @@ export default function HomeListings({ title, listings }: Props) {
     <div className="home-listings">
       <Title level={4}>{title}</Title>
       <List
-        grid={{ gutter: 8, xs: 1, lg: 4, sm: 2 }}
+        grid={{ gutter: 18, xs: 1, lg: 4, md: 2 }}
         dataSource={listings}
         renderItem={(listing) => (
           <List.Item>

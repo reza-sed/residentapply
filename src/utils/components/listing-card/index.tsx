@@ -39,8 +39,9 @@ export const ListingCard = ({ listing }: Props) => {
         <Text strong ellipsis>
           {listing.address}
         </Text>
-        <div>
-          <UserOutlined />
+        <div style={{ textAlign: "right", marginTop: "0.5rem" }}>
+          <UserOutlined style={{ color: "dodgerblue" }} />
+          &nbsp;
           <Text>{listing.numOfGuests} guests</Text>
         </div>
       </div>
