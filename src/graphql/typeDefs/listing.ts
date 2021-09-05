@@ -13,6 +13,7 @@ export const listing = gql`
   }
 
   type Listings {
+    region: String
     total: Int
     result: [Listing!]!
   }
@@ -32,5 +33,21 @@ export const listing = gql`
     bookingsIndex: String!
     price: Int!
     numOfGuests: Int!
+  }
+
+  input HostListingInput {
+    title: String!
+    description: String!
+    address: String!
+    image: String!
+    type: ListingType!
+    price: Int!
+    numOfGuests: Int!
+  }
+
+  type ResponseMessage {
+    status: Int!
+    message: String!
+    data: String
   }
 `;

@@ -26,6 +26,7 @@ export default shield(
       registerUser: allow,
       login: allow,
       logout: isAuthenticated,
+      addListing: isAuthenticated,
     },
     Query: {
       user: isAuthenticated,

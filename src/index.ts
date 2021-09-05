@@ -16,6 +16,9 @@ if (!ENV_VARIABLES.SECRET) throw new Error("secrect is not defined!");
 if (!ENV_VARIABLES.COOKIE_SECRET)
   throw new Error("cookie secret is not defined!");
 
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb" }));
+
 app.use(cookieParser(ENV_VARIABLES.COOKIE_SECRET));
 
 app.use(

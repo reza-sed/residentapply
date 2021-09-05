@@ -29,6 +29,7 @@ const Mutation = gql`
     ): Boolean
     login(username: String, password: String): Viewer
     logout: Viewer!
+    addListing(input: HostListingInput!): ResponseMessage!
   }
 `;
 

@@ -19,6 +19,7 @@ interface ListingsInput {
 }
 
 interface ListingsData {
+  region?: string;
   result: Listing[];
   total: number;
 }
@@ -88,6 +89,10 @@ export const queryResolvers: IResolvers = {
           if (city) query.city = city;
           if (country) query.country = country;
           else throw new Error("could not find the requested location");
+
+          const cityRegion = city ? `${city} ,` : "";
+          const adminRegion = admin ? `${admin} ,` : "";
+          data.region = `${cityRegion}${adminRegion}${country}`;
         }
 
         let cursor = await db.listings.find(query);

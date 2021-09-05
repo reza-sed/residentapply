@@ -1,20 +1,20 @@
 import { IResolvers } from "apollo-server-express";
-import { Response } from "express";
+import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { ENV_VARIABLES } from "../../utils/env";
 import { ObjectId } from "mongodb";
-import { RequestUser, Viewer } from "../../utils/lib/types";
-import { Database, User } from "../../database/dbTypes";
-
-interface UserInput {
-  walletId?: string;
-  firstName?: string;
-  lastName?: string;
-  username?: string;
-  email?: string;
-  password?: string;
-}
+import {
+  RequestUser,
+  Viewer,
+  UserInput,
+  HostListingValidationSchema,
+  ResponseMessage,
+  HostListingArgs,
+} from "../../utils/lib/types";
+import { Database, Listing, User } from "../../database/dbTypes";
+import * as yup from "yup";
+import { geocode } from "../../utils/services/location-geocode";
 
 const cookieOptions = {
   httpOnly: true,
@@ -172,6 +172,56 @@ export const mutationResolvers: IResolvers = {
       } catch (error) {
         throw new Error("error on loging out");
       }
+    },
+    addListing: async (
+      _parent: undefined,
+      { input }: HostListingArgs,
+      { db, user }: { db: Database; user: RequestUser | null }
+    ): Promise<ResponseMessage<string>> => {
+      let response = {} as ResponseMessage<string>;
+
+      if (!user) {
+        throw new Error("user is not existed");
+      }
+
+      const { description, price, title, type } =
+        await HostListingValidationSchema.validate(input);
+
+      if (!description || !price || !title || !type) {
+        response.status = 400;
+        response.message = "requierd field should be correcly filled";
+        return response;
+      }
+
+      const { country, admin, city } = await geocode(input.address);
+      if (!country || !admin || !city) {
+        //throw new Error("invalid address is provided");
+        response.status = 400;
+        response.message = "the entered address could not be found, try again";
+        return response;
+      }
+
+      const insertedResult = await db.listings.insertOne({
+        _id: new ObjectId(),
+        ...input,
+        bookings: [],
+        bookingsIndex: {},
+        city,
+        admin,
+        country,
+        host: user._id,
+      });
+
+      await db.users.updateOne(
+        { _id: new ObjectId(user._id) },
+        { $push: { listings: insertedResult.insertedId } }
+      );
+
+      response.status = 201;
+      response.message = "sucess";
+      response.data = insertedResult.insertedId.toHexString();
+
+      return response;
     },
   },
 };
